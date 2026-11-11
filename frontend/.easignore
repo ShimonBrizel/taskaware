@@ -1,0 +1,6 @@
+.vs/
+.vscode/
+**/*.vsidx
+backend/
+node_modules/
+.expo/
