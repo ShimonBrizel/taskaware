@@ -18,7 +18,7 @@ function makeRequest(url) {
 
 async function runTest() {
     try {
-        const res = await makeRequest('https://taskaware-backend.onrender.com/api/check-update/');
+        const res = await makeRequest('https://taskaware-shimon.onrender.com/api/check-update/');
         console.log(`Status: ${res.statusCode}`);
         console.log(`Response: ${res.body}`);
     } catch (err) {

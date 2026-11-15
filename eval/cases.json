@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "description": "Golden set for TaskAware /api/ask-ai/. Each case lists the tasks the product SHOULD produce. Scored fields: location (place category), context, condition, due date, and task count. Titles are saved for manual review but not scored.",
+    "deviceTime": "2026-11-11T09:00:00+02:00",
+    "deviceTimeNote": "Fixed to Wednesday 11 Nov 2026, 09:00 Israel time, so relative dates are deterministic. Tomorrow = 2026-11-12, Sunday = 2026-11-15.",
+    "fieldRules": {
+      "location": "null = no place expected; array = any of these categories is correct; \"ANY_NON_NULL\" = any place is fine as long as one is returned; \"ANY\" = not scored",
+      "context": "null = no anchor context (work/home/school/gym) expected; array = acceptable keys; \"ANY\" = not scored",
+      "condition": "null or array of before/during/after; \"ANY\" = not scored",
+      "due": "null = no date expected; {date, hours:[from,to]} = local date and hour range (inclusive); {date} = any hour; \"ANY\" = not scored"
+    }
+  },
+  "cases": [
+    { "id": "he-place-01", "text": "לקנות חלב", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["supermarket"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-02", "text": "לקנות קוטג' וביצים", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["supermarket"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-03", "text": "לקנות אקמול", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["pharmacy"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-04", "text": "לאסוף חבילה מהדואר", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["post_office"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-05", "text": "למשוך כסף", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["atm", "bank"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-06", "text": "להפקיד צ'ק", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["bank"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-07", "text": "לקנות מטען לטלפון", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["electronics_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-08", "text": "לשכפל מפתח", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["hardware_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-09", "text": "להדפיס את העבודה", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["print_shop"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-10", "text": "להחזיר ספר לספרייה", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["library"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-11", "text": "לקנות חלה לשבת", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["bakery", "supermarket"], "context": null, "condition": null, "due": "ANY" } ] },
+    { "id": "he-place-12", "text": "לקנות אוזניות", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["electronics_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-13", "text": "לקנות מברגים", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["hardware_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-14", "text": "לקנות פיתות", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["bakery", "supermarket"], "context": null, "condition": null, "due": null } ] },
+    { "id": "he-place-15", "text": "תזכיר לי לקנות במבה", "tags": ["single", "hebrew", "place"], "expected": [ { "location": ["supermarket"], "context": null, "condition": null, "due": null } ] },
+
+    { "id": "en-place-01", "text": "buy shampoo", "tags": ["single", "english", "place"], "expected": [ { "location": ["supermarket", "pharmacy"], "context": null, "condition": null, "due": null } ] },
+    { "id": "en-place-02", "text": "pick up my prescription", "tags": ["single", "english", "place"], "expected": [ { "location": ["pharmacy"], "context": null, "condition": null, "due": null } ] },
+    { "id": "en-place-03", "text": "get cash", "tags": ["single", "english", "place"], "expected": [ { "location": ["atm", "bank"], "context": null, "condition": null, "due": null } ] },
+    { "id": "en-place-04", "text": "buy a USB cable", "tags": ["single", "english", "place"], "expected": [ { "location": ["electronics_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "en-place-05", "text": "send a letter", "tags": ["single", "english", "place"], "expected": [ { "location": ["post_office"], "context": null, "condition": null, "due": null } ] },
+
+    { "id": "infer-01", "text": "נגמר לנו נייר טואלט", "tags": ["single", "hebrew", "place", "implicit"], "expected": [ { "location": ["supermarket"], "context": null, "condition": null, "due": null } ] },
+    { "id": "infer-02", "text": "צריך תרופה להורדת חום", "tags": ["single", "hebrew", "place", "implicit"], "expected": [ { "location": ["pharmacy"], "context": null, "condition": null, "due": null } ] },
+    { "id": "infer-03", "text": "לקנות ברגים לארון", "tags": ["single", "hebrew", "place", "implicit"], "expected": [ { "location": ["hardware_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "infer-04", "text": "אין לנו מה לאכול בבית", "tags": ["single", "hebrew", "place", "implicit"], "expected": [ { "location": ["supermarket", "restaurant"], "context": "ANY", "condition": "ANY", "due": null } ] },
+    { "id": "infer-05", "text": "סושי לארוחת ערב", "tags": ["single", "hebrew", "place", "implicit"], "expected": [ { "location": ["restaurant"], "context": null, "condition": null, "due": "ANY" } ] },
+    { "id": "infer-06", "text": "לקנות פרחים לאמא", "tags": ["single", "hebrew", "place", "out-of-catalog"], "expected": [ { "location": "ANY_NON_NULL", "context": null, "condition": null, "due": null } ] },
+    { "id": "infer-07", "text": "להחליף עדשות למשקפיים", "tags": ["single", "hebrew", "place", "out-of-catalog"], "expected": [ { "location": "ANY_NON_NULL", "context": null, "condition": null, "due": null } ] },
+
+    { "id": "mixed-01", "text": "לקנות charger לפלאפון", "tags": ["single", "mixed-language", "place"], "expected": [ { "location": ["electronics_store"], "context": null, "condition": null, "due": null } ] },
+    { "id": "mixed-02", "text": "need to buy אקמול", "tags": ["single", "mixed-language", "place"], "expected": [ { "location": ["pharmacy"], "context": null, "condition": null, "due": null } ] },
+
+    { "id": "time-01", "text": "להתקשר לאמא מחר ב-10 בבוקר", "tags": ["single", "hebrew", "time"], "expected": [ { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-12", "hours": [10, 10] } } ] },
+    { "id": "time-02", "text": "לשלוח מייל למרצה היום ב-5 אחרי הצהריים", "tags": ["single", "hebrew", "time"], "expected": [ { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-11", "hours": [17, 17] } } ] },
+    { "id": "time-03", "text": "פגישה עם יוסי ביום ראשון בשמונה בערב", "tags": ["single", "hebrew", "time"], "expected": [ { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-15", "hours": [20, 20] } } ] },
+    { "id": "time-04", "text": "call the dentist tomorrow at 9am", "tags": ["single", "english", "time"], "expected": [ { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-12", "hours": [9, 9] } } ] },
+    { "id": "time-05", "text": "להגיש את המטלה מחרתיים", "tags": ["single", "hebrew", "time"], "expected": [ { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-13" } } ] },
+    { "id": "time-06", "text": "לקחת תרופה בעוד שעתיים", "tags": ["single", "hebrew", "time"], "expected": [ { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-11", "hours": [11, 11] } } ] },
+    { "id": "time-07", "text": "לקנות אדוויל מחר בבוקר", "tags": ["single", "hebrew", "time", "place"], "expected": [ { "location": ["pharmacy"], "context": null, "condition": null, "due": { "date": "2026-11-12", "hours": [6, 11] } } ] },
+
+    { "id": "noplace-01", "text": "לסיים לכתוב את הסמינריון", "tags": ["single", "hebrew", "no-place"], "expected": [ { "location": null, "context": null, "condition": null, "due": null } ] },
+    { "id": "noplace-02", "text": "לענות להודעה של דני", "tags": ["single", "hebrew", "no-place"], "expected": [ { "location": null, "context": null, "condition": null, "due": null } ] },
+    { "id": "noplace-03", "text": "remember to drink water", "tags": ["single", "english", "no-place"], "expected": [ { "location": null, "context": null, "condition": null, "due": null } ] },
+    { "id": "noplace-04", "text": "לחשוב על מתנה ליום הולדת של נועה", "tags": ["single", "hebrew", "no-place"], "expected": [ { "location": null, "context": null, "condition": null, "due": null } ] },
+
+    { "id": "ctx-01", "text": "לקנות חלב אחרי העבודה", "tags": ["single", "hebrew", "context", "place"], "expected": [ { "location": ["supermarket"], "context": ["work"], "condition": ["after"], "due": null } ] },
+    { "id": "ctx-02", "text": "לקחת את הכביסה כשאני בבית", "tags": ["single", "hebrew", "context"], "expected": [ { "location": null, "context": ["home"], "condition": ["during"], "due": null } ] },
+    { "id": "ctx-03", "text": "להביא מחברת לפני הלימודים", "tags": ["single", "hebrew", "context"], "expected": [ { "location": null, "context": ["school"], "condition": ["before"], "due": null } ] },
+    { "id": "ctx-04", "text": "לקנות בקבוק מים אחרי חדר כושר", "tags": ["single", "hebrew", "context", "place"], "expected": [ { "location": ["supermarket"], "context": ["gym"], "condition": ["after"], "due": null } ] },
+    { "id": "ctx-05", "text": "buy coffee on the way to work", "tags": ["single", "english", "context", "place"], "expected": [ { "location": ["cafe"], "context": ["work"], "condition": ["before"], "due": null } ] },
+    { "id": "ctx-06", "text": "לעבור בבנק אחרי העבודה", "tags": ["single", "hebrew", "context", "place"], "expected": [ { "location": ["bank"], "context": ["work"], "condition": ["after"], "due": null } ] },
+    { "id": "ctx-07", "text": "pick up pills from the pharmacy after school", "tags": ["single", "english", "context", "place"], "expected": [ { "location": ["pharmacy"], "context": ["school"], "condition": ["after"], "due": null } ] },
+    { "id": "ctx-08", "text": "להתקשר לרופא כשאני בעבודה", "tags": ["single", "hebrew", "context"], "expected": [ { "location": null, "context": ["work"], "condition": ["during"], "due": null } ] },
+    { "id": "ctx-09", "text": "לשלם חשבון חשמל כשאני בבית", "tags": ["single", "hebrew", "context"], "expected": [ { "location": null, "context": ["home"], "condition": ["during"], "due": null } ] },
+    { "id": "ctx-10", "text": "לקנות חלב מחר אחרי העבודה", "tags": ["single", "hebrew", "context", "place", "time"], "expected": [ { "location": ["supermarket"], "context": ["work"], "condition": ["after"], "due": { "date": "2026-11-12" } } ] },
+
+    { "id": "multi-01", "text": "לקנות חלב ולמשוך כסף", "tags": ["multi", "hebrew", "place"], "expected": [
+      { "location": ["supermarket"], "context": null, "condition": null, "due": null },
+      { "location": ["atm", "bank"], "context": null, "condition": null, "due": null } ] },
+    { "id": "multi-02", "text": "לקנות אדוויל מחר בבוקר ולשלוח חבילה בדואר", "tags": ["multi", "hebrew", "place", "time"], "expected": [
+      { "location": ["pharmacy"], "context": null, "condition": null, "due": { "date": "2026-11-12", "hours": [6, 11] } },
+      { "location": ["post_office"], "context": null, "condition": null, "due": "ANY" } ] },
+    { "id": "multi-03", "text": "buy eggs, get cash and return the library book", "tags": ["multi", "english", "place"], "expected": [
+      { "location": ["supermarket"], "context": null, "condition": null, "due": null },
+      { "location": ["atm", "bank"], "context": null, "condition": null, "due": null },
+      { "location": ["library"], "context": null, "condition": null, "due": null } ] },
+    { "id": "multi-04", "text": "לקנות לחם, להדפיס טפסים ולהתקשר לסבתא בערב", "tags": ["multi", "hebrew", "place", "time"], "expected": [
+      { "location": ["bakery", "supermarket"], "context": null, "condition": null, "due": "ANY" },
+      { "location": ["print_shop"], "context": null, "condition": null, "due": "ANY" },
+      { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-11", "hours": [17, 22] } } ] },
+    { "id": "multi-05", "text": "לקנות מטען ולקבוע תור לרופא מחר ב-8 בבוקר", "tags": ["multi", "hebrew", "place", "time"], "expected": [
+      { "location": ["electronics_store"], "context": null, "condition": null, "due": "ANY" },
+      { "location": null, "context": null, "condition": null, "due": { "date": "2026-11-12", "hours": [8, 8] } } ] },
+    { "id": "multi-06", "text": "לקנות פלסטרים בבית מרקחת וגבינה בסופר", "tags": ["multi", "hebrew", "place"], "expected": [
+      { "location": ["pharmacy"], "context": null, "condition": null, "due": null },
+      { "location": ["supermarket"], "context": null, "condition": null, "due": null } ] },
+    { "id": "multi-07", "text": "לקנות קפה לפני העבודה ולהתקשר לאבא אחרי העבודה", "tags": ["multi", "hebrew", "context"], "expected": [
+      { "location": ["cafe"], "context": ["work"], "condition": ["before"], "due": null },
+      { "location": null, "context": ["work"], "condition": ["after"], "due": null } ] },
+
+    { "id": "here-01", "text": "לקנות קפה כאן", "tags": ["single", "hebrew", "here", "grounding"], "coords": [31.7817, 35.2165], "expected": [ { "location": "ANY_NON_NULL", "context": null, "condition": "ANY", "due": null } ] },
+    { "id": "here-02", "text": "לקנות משהו לאכול פה", "tags": ["single", "hebrew", "here", "grounding"], "coords": [31.7817, 35.2165], "expected": [ { "location": "ANY_NON_NULL", "context": null, "condition": "ANY", "due": null } ] },
+    { "id": "here-03", "text": "buy water nearby", "tags": ["single", "english", "here", "grounding"], "coords": [31.7817, 35.2165], "expected": [ { "location": "ANY_NON_NULL", "context": null, "condition": "ANY", "due": null } ] }
+  ]
+}

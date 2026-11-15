@@ -27,6 +27,7 @@ import * as Notifications from 'expo-notifications';
 import * as TaskManager from 'expo-task-manager';
 import * as Location from 'expo-location';
 import { useLocationSync } from './src/useLocationSync.js';
+import { API_BASE } from './src/config.js';
 
 const BACKGROUND_LOCATION_TASK = 'background-location-task';
 
@@ -43,7 +44,7 @@ TaskManager.defineTask(BACKGROUND_LOCATION_TASK, async ({ data, error }) => {
             try {
                 const savedToken = await AsyncStorage.getItem('userToken');
                 if (savedToken) {
-                    await fetch('https://taskaware-backend.onrender.com/api/location/', {
+                    await fetch(`${API_BASE}/api/location/`, {
                         method: 'PATCH',
                         headers: {
                             'Content-Type': 'application/json',
@@ -87,7 +88,6 @@ Notifications.setNotificationHandler({
     }),
 });
 
-const API_BASE = 'https://taskaware-backend.onrender.com';
 
 function AppContent() {
     const insets = useSafeAreaInsets();

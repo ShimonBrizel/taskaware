@@ -1,0 +1,33 @@
+# Render Blueprint: creates the Django backend service from this repo.
+# In Render: New > Blueprint > pick this repository, then fill in the values it asks for.
+services:
+  - type: web
+    name: taskaware-shimon
+    runtime: python
+    plan: free
+    rootDir: backend/django
+    buildCommand: bash build.sh
+    startCommand: gunicorn backend.wsgi:application
+    healthCheckPath: /api/health/
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      # Generated automatically by Render
+      - key: SECRET_KEY
+        generateValue: true
+      - key: TELEGRAM_DIGEST_SECRET
+        generateValue: true
+      - key: WHATSAPP_SERVICE_KEY
+        generateValue: true
+      # You are asked for these when the Blueprint is created
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GOOGLE_PLACES
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: WHATSAPP_SERVICE_URL
+        sync: false

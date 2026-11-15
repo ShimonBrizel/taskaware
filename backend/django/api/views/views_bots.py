@@ -13,7 +13,7 @@ from api.models import Task, UserProfile
 from .views_ai import parse_voice_message_with_ai, fetch_ai_details_for_telegram
 
 def send_telegram_message(chat_id, text, reply_markup=None):
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or "8453640532:AAErBXFHaIrZnpN_oi7H0gd1NJUXEkhriyo"
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         print("TELEGRAM_BOT_TOKEN is not configured")
         return
@@ -39,7 +39,7 @@ def send_telegram_message(chat_id, text, reply_markup=None):
         print("Failed to send telegram message:", str(e))
 
 def edit_telegram_message(chat_id, message_id, text, reply_markup=None):
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or "8453640532:AAErBXFHaIrZnpN_oi7H0gd1NJUXEkhriyo"
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         print("TELEGRAM_BOT_TOKEN is not configured")
         return
@@ -66,7 +66,7 @@ def edit_telegram_message(chat_id, message_id, text, reply_markup=None):
         print("Failed to edit telegram message:", str(e))
 
 def answer_telegram_callback(callback_id, text=None):
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or "8453640532:AAErBXFHaIrZnpN_oi7H0gd1NJUXEkhriyo"
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         print("TELEGRAM_BOT_TOKEN is not configured")
         return
@@ -90,7 +90,7 @@ def answer_telegram_callback(callback_id, text=None):
         print("Failed to answer callback query:", str(e))
 
 def download_telegram_file(file_id):
-    token = os.environ.get("TELEGRAM_BOT_TOKEN") or "8453640532:AAErBXFHaIrZnpN_oi7H0gd1NJUXEkhriyo"
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
     if not token:
         print("TELEGRAM_BOT_TOKEN is not configured")
         return None

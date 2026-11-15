@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "TaskAware",
-    "slug": "MyHelloWorldApp",
+    "slug": "taskaware",
     "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./icon.png",
@@ -71,17 +71,10 @@
       "reactCompiler": true
     },
     "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "24e2be65-d267-48fc-a4a1-0b4fbbe694d6"
-      }
+      "router": {}
     },
-    "owner": "shlomo1155",
     "runtimeVersion": {
       "policy": "appVersion"
-    },
-    "updates": {
-      "url": "https://u.expo.dev/24e2be65-d267-48fc-a4a1-0b4fbbe694d6"
     }
   }
 }

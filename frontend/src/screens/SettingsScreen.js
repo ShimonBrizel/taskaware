@@ -18,6 +18,7 @@ import * as Updates from 'expo-updates';
 import Constants from 'expo-constants';
 import * as ImagePicker from 'expo-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TELEGRAM_BOT_USERNAME, WHATSAPP_NUMBER } from '../config.js';
 
 export default function SettingsScreen({ 
     username, 
@@ -494,7 +495,7 @@ export default function SettingsScreen({
                                 </Text>
                                 <TouchableOpacity 
                                     style={[styles.telegramActionBtn, { marginBottom: 12 }]}
-                                    onPress={() => Linking.openURL('https://t.me/taskaware1_bot')}
+                                    onPress={() => Linking.openURL(`https://t.me/${TELEGRAM_BOT_USERNAME}`)}
                                 >
                                     <Text style={styles.telegramActionBtnText}>Open Telegram Chat 🚀</Text>
                                 </TouchableOpacity>
@@ -519,7 +520,7 @@ export default function SettingsScreen({
                                         
                                         <TouchableOpacity 
                                             style={styles.telegramActionBtn}
-                                            onPress={() => Linking.openURL(`https://t.me/taskaware1_bot?start=link_${linkingCode}`)}
+                                            onPress={() => Linking.openURL(`https://t.me/${TELEGRAM_BOT_USERNAME}?start=link_${linkingCode}`)}
                                         >
                                             <Text style={styles.telegramActionBtnText}>Open Telegram Bot 🚀</Text>
                                         </TouchableOpacity>
@@ -576,7 +577,7 @@ export default function SettingsScreen({
                                 </Text>
                                 <TouchableOpacity 
                                     style={[styles.telegramActionBtn, { marginBottom: 12 }]}
-                                    onPress={() => Linking.openURL('https://wa.me/972505970204')}
+                                    onPress={() => Linking.openURL(`https://wa.me/${WHATSAPP_NUMBER}`)}
                                 >
                                     <Text style={styles.telegramActionBtnText}>Open WhatsApp Chat 🚀</Text>
                                 </TouchableOpacity>
