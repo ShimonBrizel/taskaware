@@ -28,7 +28,5 @@ services:
         sync: false
       - key: GOOGLE_PLACES
         sync: false
-      - key: TELEGRAM_BOT_TOKEN
-        sync: false
-      - key: WHATSAPP_SERVICE_URL
-        sync: false
+      # Optional, add later in the Render dashboard when the bots are set up:
+      #   TELEGRAM_BOT_TOKEN, WHATSAPP_SERVICE_URL
